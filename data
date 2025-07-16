@@ -1,0 +1,44 @@
+# Reimportar librerías después del reinicio
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Recargar archivo DJI
+df_dji = pd.read_excel('dron.xlsx')  
+
+
+# Renombrar y filtrar columnas necesarias
+df_dji = df_dji.rename(columns={
+    "OSD.flyTime [s]": "time",
+    "OSD.latitude": "lat",
+    "OSD.longitude": "lon",
+    "OSD.altitude [ft]": "alt_ft",
+    "OSD.homeLatitude": "home_lat",
+    "OSD.homeLongitude": "home_lon"
+})
+
+# Eliminar filas sin coordenadas válidas
+df_dji = df_dji[(df_dji["lat"] != 0) & (df_dji["lon"] != 0)]
+
+# Convertir altitud a metros
+df_dji["alt_m"] = df_dji["alt_ft"] * 0.3048
+
+# Gráfica de trayectoria
+plt.figure(figsize=(8, 6))
+plt.plot(df_dji["lon"], df_dji["lat"], label="Trayectoria DJI", color='blue')
+plt.xlabel("Longitud")
+plt.ylabel("Latitud")
+plt.title("Trayectoria del dron DJI")
+plt.grid(True)
+plt.axis('equal')
+plt.tight_layout()
+plt.show()
+
+# Gráfica de altitud vs tiempo
+plt.figure(figsize=(10, 4))
+plt.plot(df_dji["time"], df_dji["alt_m"], color='green')
+plt.xlabel("Tiempo (s)")
+plt.ylabel("Altitud (m)")
+plt.title("Altitud del dron DJI en el tiempo")
+plt.grid(True)
+plt.tight_layout()
+plt.show()
