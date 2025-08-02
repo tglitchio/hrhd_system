@@ -17,7 +17,7 @@ from PIL import Image
 import base64
 import io
 from db import crear_base, guardar_evento, cargar_eventos, get_connection
-import predictorg
+import modelo
 
 # Configurar logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
