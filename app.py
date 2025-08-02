@@ -548,8 +548,11 @@ def crear_graficos_analisis(data):
 
 # === CONFIGURACIÓN VISUAL CON IMÁGENES ===
 # Rutas de las imágenes (ajusta estas rutas según tu estructura de archivos)
-banner_path = "C:/Users/ana cristina/Documents/QUINTOAÑO10/PROYECTO FIN DE CARRERA/Modelos/foto1.jpg"
-logo_path = "C:/Users/ana cristina/Documents/QUINTOAÑO10/PROYECTO FIN DE CARRERA/Modelos/images.jpeg"
+#banner_path = "C:/Users/ana cristina/Documents/QUINTOAÑO10/PROYECTO FIN DE CARRERA/Modelos/foto1.jpg"
+#logo_path = "C:/Users/ana cristina/Documents/QUINTOAÑO10/PROYECTO FIN DE CARRERA/Modelos/images.jpeg"
+# CAMBIAR ESTAS LÍNEAS:
+banner_path = "foto1.jpg"  # Ruta relativa
+logo_path = "images.jpeg"     # Ruta relativa
 
 # Obtener imágenes en base64
 encoded_banner = get_base64_image(banner_path)
